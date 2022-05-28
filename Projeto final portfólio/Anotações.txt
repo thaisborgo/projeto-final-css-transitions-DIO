@@ -1,0 +1,63 @@
+ANOTAÇOES MENU HAMBURGUER CSS TRANSITIONS
+
+ATENÇÃO:No desenvolvimento de uma aplicação responsiva, deve ser usado a meta tag viewport (janela de exibição) no seu <head>, que irá preparar o code para diferentes dispositivos existentes.
+
+<meta name="viewport" content="width-device-width, initial-scale=1.0">
+
+width-device-width - para layouts mais flexíveis, baseia a largura do viewport no dispositivo em questão, para igualar largura do layout à largura do dispositivo que você deve digitar.
+
+initial-scale=1.0 - para certificar que layout será mostrado como você planejou, esse comando define o nível de zoom inicial. Irá garantir que após a abertura, o layout será exibido corretamente em escala 1:1.
+
+OBS: content="maximum-scale=1" - evita qualquer zoom pelo usuário. Antes, verificar se tal impedimento impossibilita o usuário de ler o conteúdo devidamente.
+
+OBS: Também há opção de adaptar pelo CSS, usando a regra @viewport:
+
+@viewport{
+    zoom: 1.0;
+    width: device-width;
+}
+
+@viewport{
+    zoom: 1.0;
+    width: extend-to-zoom;
+} - não especifica largura do dispositivo.
+
+@-ms-viewport{
+    width: extend-to-zoom;
+    zoom: 1.0;
+} - versão pré-fixada.
+
+## NO CSS
+- Instrutora usou o código height: 100vh, que significa que a altura do elemento será igual a 100% da altura do viewport.
+
+- background-position: no-repeat - na configuração do background, isso impede que a imagem fique se repetindo dentro do card.
+- background-size: cover - faz com que a imagem tente alcançar o card inteiro, cobrindo o conteúdo
+- cursor: pointer - tem vários tipos de cursores de mouse quando for apontar para certo conteúdo da página, neste caso, indicará um link a ser clicado (mão com dedo indicador erguido).
+- transition: define a transição entre dois estados de um elemento, seja estado de hover (quando passa mouse em cima de um elemento), ou outros tipos, como por exemplo focus (quando clica em cima), etc. É uma forma de controlar a velocidade de uma animação quando há mudança de propriedades CSS, ao invés da propriedade entrar em vigor imediatamente, as mudanças irão ocorrer durante um período de tempo.
+- position: relative - mexe com pseudoelemento do card-wrapper - efeito de borda que vai expandir na tela. Position nesse caso será absoluto (relative), para ficar absoluto ao "elemento pai" (elemento que está no controle, no caso do menu, card-wrapper).
+- ::before - comando que cria um pseudo-elemento, que é o primeiro filho do elemento atingido, usado para adicionar conteúdo decorativo a um elemento utilizando a propriedade content.
+- :hover - seleciona elementos quando passa o mouse por ele.
+OBS: Pode ser usado em qualquer elemento, não só em links.
+
+## Z-INDEX
+- Propriedade que especifica a ordem de sobreposição dos elementos na tela, informando um número inteiro como seu valor.
+- O z-index faz referência ao eixo Z, que é responsável pelo cálculo e posicionamento da profundiodade em relação à tela, que tem como referência os eixos X (horizontal) e Y (vertical).
+- Para que propriedade tenha efeito, o elemento em questão precisa ter a propriedade position definida com o valor diferente de static, que é seu posicionamento padrão, logo, position deve ser definida como fixed, sticky, relative ou absolute.
+EXEMPLO NA AULA:
+
+.checkbox {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+- No caso do projeto, o z-index é definido para que o menu fique na frente de tudo. O z-index negativo deixaria para trás.
+
+## SELETORES POSITIVO (+) E TIL (~)
+- O til (~) é o elemento de combinação "irmão geral" - casa ocorrências do segundo elemento seletor simples que sejam precedidos pelo primeiro elemento seletor simples.
